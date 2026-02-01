@@ -99,6 +99,32 @@
 </head>
 
 <body>
+<!-- Music overlay -->
+<div id="musicOverlay" style="
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+">
+  <button onclick="playMusic()" style="
+    padding:16px 26px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:#ff7eb3;
+    color:white;
+    cursor:pointer;
+  ">
+    🐱 Tap for music 🎶
+  </button>
+</div>
+
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c2c8c01c5d.mp3" type="audio/mpeg">
+</audio>
 
 <!-- floating cats & hearts -->
 <div class="float" style="left:10%;">🐱</div>
@@ -113,6 +139,14 @@
 </audio>
 
 <script>
+
+function playMusic() {
+  const music = document.getElementById("bgm");
+  music.volume = 0.6;
+  music.play();
+  document.getElementById("musicOverlay").style.display = "none";
+}
+
 let step = 0;
 const music = document.getElementById("bgm");
 
