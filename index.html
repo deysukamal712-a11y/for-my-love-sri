@@ -112,16 +112,6 @@
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c2c8c01c5d.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card" id="content">
-  <p>
-    Hey Sri… 🐱💗<br><br>
-    Hi. Hello. Yes you.<br>
-    Please don’t rush.<br>
-    Stay with me a little.
-  </p>
-  <button onclick="start()">Okayyy 😌</button>
-</div>
-
 <script>
 let step = 0;
 const music = document.getElementById("bgm");
@@ -198,7 +188,8 @@ const slides = [
 ];
 
 function start() {
-  music.play();
+  music.volume = 0.6;
+  music.play().catch(()=>{});
   next();
 }
 
@@ -224,6 +215,3 @@ function yes() {
   </p>`;
 }
 </script>
-
-</body>
-</html>
