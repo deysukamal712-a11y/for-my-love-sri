@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Sri 🤍</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      color: #2b2b2b;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 330px;
+      animation: fade 0.8s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 12px 20px;
+      background: #ff6f91;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .choice button {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      background: #ff8fab;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box" id="content">
+  <p>
+    Hey Sri… 🤍<br><br>
+    Before you do anything,<br>
+    just stay here with me for a moment.
+  </p>
+  <button onclick="next()">Okay…</button>
+</div>
+
+<script>
+  let step = 0;
+
+  const screens = [
+
+    `<p>
+      People say love fades.<br><br>
+      But they’ve never seen<br>
+      the way <strong>you</strong> love, Sri.
+    </p>
+    <button onclick="next()">Tap slowly 💗</button>`,
+
+    `<p>
+      Real love is staying.<br>
+      Even when things get messy.<br>
+      Even when distance hurts.
+    </p>
+    <button onclick="next()">I feel this…</button>`,
+
+    `<p>
+      Tell me one thing…<br><br>
+      What do you think love really is?
+    </p>
+    <div class="choice">
+      <button onclick="next()">Feeling safe with one person 🤍</button>
+      <button onclick="next()">Choosing each other every day 💞</button>
+      <button onclick="next()">Missing someone but still smiling 🌙</button>
+    </div>`,
+
+    `<p>
+      Yeah…<br><br>
+      That answer sounds exactly like you, Sri.
+    </p>
+    <button onclick="next()">Keep going…</button>`,
+
+    `<p>
+      I won’t write a long speech.<br><br>
+      I just want you to know<br>
+      how gently you sit in my heart.
+    </p>
+    <button onclick="next()">…</button>`,
+
+    `<p>
+      So here’s something simple.<br>
+      Something honest.<br>
+      Something meant only for you.
+    </p>
+    <button onclick="next()">🤍</button>`,
+
+    `<p>
+      <strong>Sri…</strong><br><br>
+      Will you be my Valentine? 💖<br><br>
+      Not just today.<br>
+      But in all the quiet moments after.
+    </p>
+    <div class="choice">
+      <button onclick="yes()">YES 🥺💗</button>
+      <button onclick="yes()">Obviously 😭💞</button>
+    </div>`
+  ];
+
+  function next() {
+    step++;
+    document.getElementById("content").innerHTML = screens[step];
+  }
+
+  function yes() {
+    document.getElementById("content").innerHTML =
+    `<p>
+      I knew it… 🤍<br><br>
+      And Sri,<br>
+      I choose you.<br>
+      Today. Tomorrow. Always.
+    </p>`;
+  }
+</script>
+
+</body>
+</html>
