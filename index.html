@@ -1,156 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Sri 🤍</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sri 🐱💗</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
-      background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
-      color: #2b2b2b;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #ffd1dc, #fbc2eb, #a6c1ee, #ffdde1);
+    background-size: 400% 400%;
+    animation: bg 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  @keyframes bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    .box {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 25px;
-      border-radius: 20px;
-      max-width: 330px;
-      animation: fade 0.8s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
+  .card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 24px;
+    padding: 26px;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    animation: pop 0.6s ease;
+    position: relative;
+    z-index: 2;
+  }
 
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+  @keyframes pop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
 
-    button {
-      margin-top: 18px;
-      padding: 12px 20px;
-      background: #ff6f91;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+  p {
+    font-size: 17px;
+    line-height: 1.55;
+    color: #333;
+  }
 
-    button:hover {
-      transform: scale(1.05);
-    }
+  button {
+    margin-top: 18px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #ff7eb3;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
 
-    .choice button {
-      display: block;
-      width: 100%;
-      margin-top: 12px;
-      background: #ff8fab;
-    }
-  </style>
+  button:hover {
+    transform: scale(1.08);
+  }
+
+  .choice button {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    background: #ff9acb;
+  }
+
+  .float {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp 8s linear infinite;
+    font-size: 28px;
+    opacity: 0.85;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-130vh); }
+  }
+
+  .confetti {
+    position: absolute;
+    font-size: 22px;
+    animation: confettiFall 3s linear infinite;
+  }
+
+  @keyframes confettiFall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); }
+  }
+</style>
 </head>
 
 <body>
 
-<div class="box" id="content">
+<!-- floating cats & hearts -->
+<div class="float" style="left:10%;">🐱</div>
+<div class="float" style="left:25%; animation-delay:2s;">💗</div>
+<div class="float" style="left:45%; animation-delay:4s;">🐾</div>
+<div class="float" style="left:65%; animation-delay:1s;">😽</div>
+<div class="float" style="left:85%; animation-delay:3s;">💞</div>
+
+<!-- background music -->
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c2c8c01c5d.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="content">
   <p>
-    Hey Sri… 🤍<br><br>
-    Before you do anything,<br>
-    just stay here with me for a moment.
+    Hey Sri… 🐱💗<br><br>
+    Hi. Hello. Yes you.<br>
+    Please don’t rush.<br>
+    Stay with me a little.
   </p>
-  <button onclick="next()">Okay…</button>
+  <button onclick="start()">Okayyy 😌</button>
 </div>
 
 <script>
-  let step = 0;
+let step = 0;
+const music = document.getElementById("bgm");
 
-  const screens = [
+const slides = [
 
-    `<p>
-      People say love fades.<br><br>
-      But they’ve never seen<br>
-      the way <strong>you</strong> love, Sri.
-    </p>
-    <button onclick="next()">Tap slowly 💗</button>`,
+`<p>
+  So um…<br><br>
+  I was thinking about you.<br>
+  (Again. Always. 😭)
+</p>
+<button onclick="next()">Go on…</button>`,
 
-    `<p>
-      Real love is staying.<br>
-      Even when things get messy.<br>
-      Even when distance hurts.
-    </p>
-    <button onclick="next()">I feel this…</button>`,
+`<p>
+  The world gets loud sometimes.<br>
+  But somehow…<br>
+  you feel calm.
+</p>
+<button onclick="next()">🥺</button>`,
 
-    `<p>
-      Tell me one thing…<br><br>
-      What do you think love really is?
-    </p>
-    <div class="choice">
-      <button onclick="next()">Feeling safe with one person 🤍</button>
-      <button onclick="next()">Choosing each other every day 💞</button>
-      <button onclick="next()">Missing someone but still smiling 🌙</button>
-    </div>`,
+`<p>
+  Loving you isn’t dramatic.<br>
+  It’s soft.<br>
+  It’s safe.<br>
+  It’s my comfort place.
+</p>
+<button onclick="next()">Aww…</button>`,
 
-    `<p>
-      Yeah…<br><br>
-      That answer sounds exactly like you, Sri.
-    </p>
-    <button onclick="next()">Keep going…</button>`,
+`<p>
+  Quick important question 😤👇<br><br>
+  Are you aware that you’re extremely adorable?
+</p>
+<div class="choice">
+  <button onclick="next()">Yes 😌</button>
+  <button onclick="next()">I am now 😭</button>
+</div>`,
 
-    `<p>
-      I won’t write a long speech.<br><br>
-      I just want you to know<br>
-      how gently you sit in my heart.
-    </p>
-    <button onclick="next()">…</button>`,
+`<p>
+  Good. Because denial was not accepted anyway.
+</p>
+<button onclick="next()">😂</button>`,
 
-    `<p>
-      So here’s something simple.<br>
-      Something honest.<br>
-      Something meant only for you.
-    </p>
-    <button onclick="next()">🤍</button>`,
+`<p>
+  Sri…<br><br>
+  You make my days lighter.<br>
+  My thoughts warmer.<br>
+  And my heart very clingy.
+</p>
+<button onclick="next()">Keep going 💗</button>`,
 
-    `<p>
-      <strong>Sri…</strong><br><br>
-      Will you be my Valentine? 💖<br><br>
-      Not just today.<br>
-      But in all the quiet moments after.
-    </p>
-    <div class="choice">
-      <button onclick="yes()">YES 🥺💗</button>
-      <button onclick="yes()">Obviously 😭💞</button>
-    </div>`
-  ];
+`<p>
+  Even on hard days.<br>
+  Even when distance exists.<br>
+  I still choose you.
+</p>
+<button onclick="next()">🥹</button>`,
 
-  function next() {
-    step++;
-    document.getElementById("content").innerHTML = screens[step];
-  }
+`<p>
+  So I won’t write a long speech.<br><br>
+  I’ll just ask you honestly.
+</p>
+<button onclick="next()">…</button>`,
 
-  function yes() {
-    document.getElementById("content").innerHTML =
-    `<p>
-      I knew it… 🤍<br><br>
-      And Sri,<br>
-      I choose you.<br>
-      Today. Tomorrow. Always.
-    </p>`;
-  }
+`<p>
+  <strong>Sri 🐱💞</strong><br><br>
+  Will you be my Valentine?<br><br>
+  Not just today.<br>
+  But every silly, soft day after.
+</p>
+<div class="choice">
+  <button onclick="yes()">YES 😭💗</button>
+  <button onclick="yes()">Obviously 😽</button>
+</div>`
+];
+
+function start() {
+  music.play();
+  next();
+}
+
+function next() {
+  step++;
+  document.getElementById("content").innerHTML = slides[step];
+}
+
+function yes() {
+  document.body.innerHTML += `
+    <div class="confetti" style="left:10%;">🎉</div>
+    <div class="confetti" style="left:30%;">💖</div>
+    <div class="confetti" style="left:50%;">✨</div>
+    <div class="confetti" style="left:70%;">🎊</div>
+    <div class="confetti" style="left:90%;">💗</div>
+  `;
+  document.getElementById("content").innerHTML =
+  `<p>
+    HEHE 😭💗<br><br>
+    I knew it.<br>
+    Come here 🫂<br>
+    This heart is yours now.
+  </p>`;
+}
 </script>
 
 </body>
