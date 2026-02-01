@@ -3,84 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Sri</title>
+<title>…</title>
 
 <style>
-  body {
+  * {
     margin: 0;
-    height: 100vh;
-    background: #0f0f0f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: white;
-    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  #text {
+  body {
+    height: 100vh;
+    background: #0e0e0e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #f5f5f5;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #line {
     max-width: 85%;
     font-size: 22px;
-    line-height: 1.5;
+    line-height: 1.55;
     opacity: 0;
-    animation: fadeIn 1s forwards;
+    transform: translateY(8px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  #line.show {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .hint {
     position: fixed;
-    bottom: 20px;
-    font-size: 13px;
-    opacity: 0.4;
+    bottom: 18px;
+    font-size: 12px;
+    opacity: 0.35;
+    letter-spacing: 1px;
   }
 </style>
 </head>
 
-<body onclick="next()">
+<body onclick="nextLine()">
 
-<div id="text"></div>
-<div class="hint">tap anywhere</div>
+<div id="line"></div>
+<div class="hint">tap</div>
 
 <script>
 const lines = [
   "People think relationships fail because effort is missing.",
-  "But they’ve never seen what real love looks like.",
+  "But they’ve never seen what real love actually looks like.",
+
   "",
+
   "Real love stays.",
-  "Even when things get heavy.",
-  "Even when distance exists.",
+  "Even when it’s uncomfortable.",
+  "Even when it’s exhausting.",
+
   "",
+
   "It reassures.",
-  "It chooses communication over ego.",
-  "It tries again.",
+  "It listens.",
+  "It chooses understanding over ego.",
+
   "",
+
   "And if love had a definition…",
-  "it would look a lot like you, Sri.",
+  "it wouldn’t be loud promises.",
+
   "",
-  "So I won’t make this dramatic.",
-  "I’ll just be honest.",
+
+  "It would look a lot like you.",
+
   "",
-  "Sri…",
-  "will you be my Valentine?"
+
+  "So I won’t overthink this.",
+
+  "",
+
+  "Will you be my Valentine?"
 ];
 
-let index = 0;
-const textDiv = document.getElementById("text");
+let i = 0;
+const el = document.getElementById("line");
 
-function next() {
-  if (index >= lines.length) return;
-  textDiv.style.animation = "none";
-  textDiv.offsetHeight; // reset animation
-  textDiv.style.animation = null;
-  textDiv.textContent = lines[index];
-  index++;
+function nextLine() {
+  if (i >= lines.length) return;
+
+  el.classList.remove("show");
+
+  setTimeout(() => {
+    el.textContent = lines[i] === "" ? "\u00A0" : lines[i];
+    el.classList.add("show");
+    i++;
+  }, 200);
 }
 
-next();
+nextLine();
 </script>
 
 </body>
